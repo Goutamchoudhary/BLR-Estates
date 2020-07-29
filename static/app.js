@@ -26,19 +26,23 @@ function onClickedEstimatePrice() {
   var location = document.getElementById("uiLocations");
   var estPrice = document.getElementById("uiEstimatedPrice");
 
-  var url = $SCRIPT_ROOT + '/predict_home_price'; //Use this if you are NOT using nginx 
+  // var url = $SCRIPT_ROOT + '/predict_home_price'; //Use this if you are NOT using nginx 
   
   // var url = "/api/predict_home_price"   // Use this if  you are using nginx. 
+  
+  var data = {total_sqft: parseFloat(sqft.value), bhk: bhk, bath: bathrooms, location: location.value};
 
-  $.post(url, {
-    total_sqft: parseFloat(sqft.value),
-    bhk: bhk,
-    bath: bathrooms,
-    location: location.value
-  },function(data, status) {
-    console.log(data.estimated_price);
-    estPrice.innerHTML = "<p>Price: <span> " + data.estimated_price.toString() + " Lakh</span> </p>";
-    console.log(status);
+  $.ajax({
+    //url: $SCRIPT_ROOT + '/predict_home_price',
+    url : window.location.href + '/predict_home_price',
+    data: data,
+    type: 'POST',
+    datatype: 'json',
+    success: function(response){
+      console.log("hello");
+      console.log(response.estimated_price);
+      estPrice.innerHTML = "<p>Price: <span> " + response.estimated_price.toString() + " Lakh</span> </p>";
+    }
   });
 
 }
@@ -46,15 +50,18 @@ function onClickedEstimatePrice() {
 function onPageLoad() {
   console.log( "document loaded" );
 
-  var url = $SCRIPT_ROOT + '/get_location_names'; // Use this if you are NOT using nginx 
+  // var url = $SCRIPT_ROOT + '/get_location_names'; // Use this if you are NOT using nginx 
 
   // var url = "/api/get_location_names"   // Use this if  you are using nginx.
   
-  $.get(url,function(data, status) {
-    console.log("got response for get_location_names request");
-    if(data) {
-        var locations = data.locations;
-        var uiLocations = document.getElementById("uiLocations");
+  $.ajax({
+    url : window.location.href + '/get_location_names',
+    type: 'GET',
+    dataType: 'json',
+    success: function(response){
+        console.log("got response for get_location_names request");
+        var locations = response.locations;
+        // var uiLocations = document.getElementById("uiLocations");
         $('#uiLocations').empty();
         for(var i in locations) {
             var opt = new Option(locations[i]);
