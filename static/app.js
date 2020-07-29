@@ -18,6 +18,8 @@ function getBHKValue() {
   return -1; // Invalid Value
 }
 
+console.log(window.location.href);
+
 function onClickedEstimatePrice() {
   console.log("Estimate price button clicked");
   var sqft = document.getElementById("uiSqft");
