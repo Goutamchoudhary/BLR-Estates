@@ -1,0 +1,108 @@
+  
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Banglore Home Price Prediction</title>
+		<link rel="icon" href="data:,">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+		
+</head>
+<body>
+  <!-- Navbar (sit on top) -->
+  <div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="app.html" class="w3-bar-item w3-button"><b>BLR</b> Estates</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+			<a href="#" class="w3-bar-item w3-button">Home</a>
+      <a href="#" class="w3-bar-item w3-button">Projects</a>
+      <a href="#" class="w3-bar-item w3-button">About</a>
+      <a href="#" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+  </div> 
+	
+	<div class="background-img-container">
+			<div class="about">
+					<h1>Welcome</h1><br>
+					<h1>We are <strong>BLR Estates</strong></h1><br>
+			</div>
+			
+			<div class="main-container">
+				<form action="{{ url_for('predict_home_price')}}" method="POST" class="form"> 
+					<h2>Area (Square Feet)</h2>
+						<input class="area"  type="email" id="uiSqft" class="floatLabel" name="Squareft" placeholder="Enter Area in Sqft">
+					<h2>BHK</h2>
+					<div class="switch-field">
+						<input type="radio" id="radio-bhk-1" name="uiBHK" value="1"/>
+						<label for="radio-bhk-1">1</label>
+						<input type="radio" id="radio-bhk-2" name="uiBHK" value="2"/>
+						<label for="radio-bhk-2">2</label>
+						<input type="radio" id="radio-bhk-3" name="uiBHK" value="3"/>
+						<label for="radio-bhk-3">3</label>
+						<input type="radio" id="radio-bhk-4" name="uiBHK" value="4"/>
+						<label for="radio-bhk-4">4</label>
+						<input type="radio" id="radio-bhk-5" name="uiBHK" value="5"/>
+						<label for="radio-bhk-5">5</label>
+					</div>
+					
+					<h2>Bath</h2>
+					<div class="switch-field">
+						<input type="radio" id="radio-bath-1" name="uiBathrooms" value="1"/>
+						<label for="radio-bath-1">1</label>
+						<input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" />
+						<label for="radio-bath-2">2</label>
+						<input type="radio" id="radio-bath-3" name="uiBathrooms" value="3"/>
+						<label for="radio-bath-3">3</label>
+						<input type="radio" id="radio-bath-4" name="uiBathrooms" value="4"/>
+						<label for="radio-bath-4">4</label>
+						<input type="radio" id="radio-bath-5" name="uiBathrooms" value="5"/>
+						<label for="radio-bath-5">5</label>
+					</div>
+
+					<h2>Location</h2>
+					<div>
+						<select class="location" name="" id="uiLocations">
+							<option value="" disabled="disabled" selected="selected">Choose a Location</option>
+							<option>Electronic City</option>
+							<option>Rajaji Nagar</option>
+						</select>
+					</div>
+					<button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
+				
+				</form>
+				
+				<div class="predict-result">
+					<div id="uiEstimatedPrice" class="result">
+							<p>Price: <span></span></p>
+					</div>
+				</div>
+				
+	   	</div>
+	</div>
+  <script type="text/javascript" src="/static/app.js"></script>
+  <script type=text/javascript> $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+</body>
+
+<footer class="footer">
+	<div class="social-menu">
+		 <ul>
+				<div class="contact">
+				 <p class='footer-description'>© 2020 Copyright:  Gautam Choudhary.</p>
+				</div>
+				<div class="social-list">
+					 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+					 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					 <li><a href="#"><i class="fa fa-github"></i></a></li>
+				</div>   
+		 </ul>
+	</div>    
+</footer>
+
+
+</html>
