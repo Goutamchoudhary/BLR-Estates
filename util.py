@@ -43,15 +43,13 @@ def load_saved_artifacts():
   
   
   if __model is None:
-    with open("./artifacts/banglore_home_prices_model.pickle", 'rb') as f:
-       __model = pickle.load(f)
+    __model = pickle.load(open("./artifacts/banglore_home_prices_model.pickle", 'rb'))
 
   
-  with open("./artifacts/columns.json", "r") as f:
-    if __data_columns is None:
-       __data_columns = json.load(f)['data_columns']
-    if __locations is None:
-       __locations = __data_columns[3:]                 # first 3 columns are sqft, bath, bhk
+  if __data_columns is None:
+    __data_columns = json.load(open("./artifacts/columns.json", "r"))['data_columns']
+  if __locations is None:
+    __locations = __data_columns[3:]                 # first 3 columns are sqft, bath, bhk
     print("hello")
   
 
