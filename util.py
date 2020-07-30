@@ -15,15 +15,14 @@ def get_estimated_price(location, sqft, bhk, bath):
    
   if __data_columns is not None:
     x = np.zeros(len(__data_columns))
+    x[0] = sqft
+    x[1] = bath
+    x[2] = bhk
+    if loc_index >= 0:
+      x[loc_index] = 1
+
+    return round(__model.predict([x])[0], 2)  
   
-  x[0] = sqft
-  x[1] = bath
-  x[2] = bhk
-  if loc_index >= 0:
-    x[loc_index] = 1
-
-  return round(__model.predict([x])[0], 2) 
-
 
 def get_location_names():
   return __locations
