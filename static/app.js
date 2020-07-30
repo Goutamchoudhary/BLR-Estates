@@ -18,7 +18,6 @@ function getBHKValue() {
   return -1; // Invalid Value
 }
 
-console.log(window.location.href);
 
 function onClickedEstimatePrice() {
   console.log("Estimate price button clicked");
@@ -39,10 +38,10 @@ function onClickedEstimatePrice() {
     data: data,
     type: 'POST',
     datatype: 'json',
-    success: function(response){
+    success: function(data){
       console.log("hello");
-      console.log(response.estimated_price);
-      estPrice.innerHTML = "<p>Price: <span> " + response.estimated_price.toString() + " Lakh</span> </p>";
+      console.log(data.estimated_price);
+      estPrice.innerHTML = "<p>Price: <span> " + data.estimated_price.toString() + " Lakh</span> </p>";
     }
   });
 
@@ -60,9 +59,9 @@ function onPageLoad() {
     url : '/get_location_names',
     type: 'GET',
     dataType: 'json',
-    success: function(response){
+    success: function(data){
         console.log("got response for get_location_names request");
-        var locations = response.locations;
+        var locations = data.locations;
         // var uiLocations = document.getElementById("uiLocations");
         $('#uiLocations').empty();
         for(var i in locations) {
