@@ -38,10 +38,10 @@ function onClickedEstimatePrice() {
     data: data,
     type: 'POST',
     //datatype: 'json',
-    success: function(data){
+    success: function(response){
       console.log("hello");
-      console.log(data);
-      estPrice.innerHTML = "<p>Price: <span> " + data.estimated_price.toString() + " Lakh</span> </p>";
+      console.log(response);
+      estPrice.innerHTML = "<p>Price: <span> " + response.estimated_price.toString() + " Lakh</span> </p>";
     }
   });
 
@@ -59,9 +59,9 @@ function onPageLoad() {
     url : '/get_location_names',
     type: 'GET',
     //dataType: 'json',
-    success: function(data){
+    success: function(response){
         console.log("got response for get_location_names request");
-        var locations = data.locations;
+        var locations = response.locations;
         // var uiLocations = document.getElementById("uiLocations");
         $('#uiLocations').empty();
         for(var i in locations) {
