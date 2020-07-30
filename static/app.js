@@ -35,8 +35,7 @@ function onClickedEstimatePrice() {
   var data = {total_sqft: parseFloat(sqft.value), bhk: bhk, bath: bathrooms, location: location.value};
 
   $.ajax({
-    //url: $SCRIPT_ROOT + '/predict_home_price',
-    url : window.location.href + '/predict_home_price',
+    url : '/predict_home_price',
     data: data,
     type: 'POST',
     datatype: 'json',
@@ -53,11 +52,12 @@ function onPageLoad() {
   console.log( "document loaded" );
 
   // var url = $SCRIPT_ROOT + '/get_location_names'; // Use this if you are NOT using nginx 
+  // url : window.location.href + '/get_location_names'
 
   // var url = "/api/get_location_names"   // Use this if  you are using nginx.
   
   $.ajax({
-    url : window.location.href + '/get_location_names',
+    url : '/get_location_names',
     type: 'GET',
     dataType: 'json',
     success: function(response){
