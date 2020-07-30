@@ -36,7 +36,7 @@ function onClickedEstimatePrice() {
   $.ajax({
     url : '/predict_home_price',
     data: data,
-    type: 'POST',
+    method: 'POST',
     //datatype: 'json',
     success: function(response){
       console.log("hello");
@@ -57,7 +57,7 @@ function onPageLoad() {
   
   $.ajax({
     url : '/get_location_names',
-    type: 'GET',
+    method: 'GET',
     //dataType: 'json',
     success: function(response){
         console.log("got response for get_location_names request");
