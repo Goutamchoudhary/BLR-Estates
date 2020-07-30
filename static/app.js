@@ -40,7 +40,7 @@ function onClickedEstimatePrice() {
     datatype: 'json',
     success: function(data){
       console.log("hello");
-      console.log(data.estimated_price);
+      console.log(data);
       estPrice.innerHTML = "<p>Price: <span> " + data.estimated_price.toString() + " Lakh</span> </p>";
     }
   });
