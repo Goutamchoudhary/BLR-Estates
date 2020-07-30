@@ -2,22 +2,27 @@ import json
 import pickle
 import numpy as np
 
-
+__locations = None
+__data_columns = None
+__model = None
 
 def get_estimated_price(location, sqft, bhk, bath):
-   try:
-      loc_index = __data_columns.index(location.lower())
-   except:
-      loc_index = -1   
 
-   x = np.zeros(len(__data_columns))
-   x[0] = sqft
-   x[1] = bath
-   x[2] = bhk
-   if loc_index >= 0:
-     x[loc_index] = 1
+  try:
+    loc_index = __data_columns.index(location.lower())
+  except:
+    loc_index = -1   
+   
+  if __data_columns is not None:
+    x = np.zeros(len(__data_columns))
+  
+  x[0] = sqft
+  x[1] = bath
+  x[2] = bhk
+  if loc_index >= 0:
+    x[loc_index] = 1
 
-   return round(__model.predict([x])[0], 2) 
+  return round(__model.predict([x])[0], 2) 
 
 
 def get_location_names():
@@ -36,8 +41,9 @@ def load_saved_artifacts():
     __data_columns = json.load(f)['data_columns']
     __locations = __data_columns[3:]                 # first 3 columns are sqft, bath, bhk
 
-  with open("./artifacts/banglore_home_prices_model.pickle", 'rb') as f:
-    __model = pickle.load(f)
+  if __model is None:
+    with open("./artifacts/banglore_home_prices_model.pickle", 'rb') as f:
+      __model = pickle.load(f)
 
   print("loading saved artifacts...done")
    
