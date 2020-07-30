@@ -27,7 +27,9 @@ def get_estimated_price(location, sqft, bhk, bath):
   
 
 def get_location_names():
-  return __locations
+  return "My name is Gautam"
+  # print(__locations)
+  # return __locations
 
 
 def load_saved_artifacts():
@@ -40,7 +42,7 @@ def load_saved_artifacts():
 
   with open("./artifacts/columns.json", "r") as f:
    if __data_columns is None:
-     __data_columns = json.load(f)['data_columns']
+     __data_columns = json.loads(f)['data_columns']
    if __locations is None:
      __locations = __data_columns[3:]                 # first 3 columns are sqft, bath, bhk
 
