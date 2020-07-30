@@ -37,7 +37,6 @@ function onClickedEstimatePrice() {
     url : '/predict_home_price',
     data: data,
     type: "POST",
-    datatype: "json",
     success: function(response){
       console.log("hello");
       console.log(response);
