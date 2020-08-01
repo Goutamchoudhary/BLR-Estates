@@ -1,6 +1,7 @@
 import json
 import pickle
 import numpy as np
+import joblib
 
 __locations = None
 __data_columns = None
@@ -43,7 +44,8 @@ def load_saved_artifacts():
   
   
   if __model is None:
-    __model = pickle.load(open('banglore_home_prices_model.pkl', 'rb'))
+    #__model = pickle.load(open('banglore_home_prices_model.pkl', 'rb'))
+    __model = joblib.load('banglore_home_prices_model.joblib')
 
   
   if __data_columns is None:
