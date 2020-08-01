@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify, render_template, url_for
-from flask_cors import CORS
 import util
 import jinja2
+import pickle
+import json
 
 app = Flask(__name__)
-cors = CORS(app)
 
 
 @app.route('/')
