@@ -49,7 +49,7 @@ def load_saved_artifacts():
 
   
   if __data_columns is None:
-    __data_columns = json.load(open('columns.json', 'r'))['data_columns']
+    __data_columns = json.load(open('columns.json', 'rb'))['data_columns']
   if __locations is None:
     __locations = __data_columns[3:]                 # first 3 columns are sqft, bath, bhk
     print("hello")
