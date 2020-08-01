@@ -60,6 +60,7 @@ function onPageLoad() {
     if(data) {
         var locations = data.locations;
         //var uiLocations = document.getElementById("uiLocations");
+        console.log("Hello");
         $('#uiLocations').empty();
         for(var i in locations) {
             var opt = new Option(locations[i]);
