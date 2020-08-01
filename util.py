@@ -46,11 +46,11 @@ def load_saved_artifacts():
   
   if __model is None:
     #__model = pickle.load(open('banglore_home_prices_model.pkl', 'rb'))
-    __model = joblib.load('banglore_home_prices_model.joblib')
+    __model = joblib.load('./banglore_home_prices_model.joblib')
 
   
   if __data_columns is None:
-    data = json.load(open('columns.json', 'r'))
+    data = json.load(open('./columns.json', 'r'))
     __data_columns = data['data_columns']
   if __locations is None:
     __locations = __data_columns[3:]                 # first 3 columns are sqft, bath, bhk
