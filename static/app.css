@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-  height: 110vh;
+  height: 100vh;
     
 }
 
@@ -11,6 +11,8 @@ body {
   flex-direction: row; 
   align-items: center;
   padding-top: 1.2em;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
   position: relative;
   background-image: url('./architect-image.jpg');
   background-repeat: no-repeat;
@@ -18,7 +20,6 @@ body {
   background-attachment: scroll;
   background-size: auto;
   background-size:100% 100%; 
-  margin-bottom: 0;
 }
 
 .about{
@@ -67,7 +68,8 @@ body {
 }
 
 .switch-field input:checked + label {
-	background-color: #a5dc86;
+	background-color: #3760e6;
+  color: #FFFFFF;
 	box-shadow: none;
 }
 
